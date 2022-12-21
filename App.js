@@ -1,4 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { Text, View,FlatList, Pressable, Image } from 'react-native';
 
 export default function App() {
@@ -10,114 +11,154 @@ export default function App() {
   { id:1,
     name: "Slack",
     time:'ghfvsabjndkmcscm',
-    yaddas:'339'
+    yaddas:'339',
+    status:'update'
+
    
   },
    {id:2,
     name: "Facebook",
     time:'eeced,;',
-    yaddas:'389'
+    yaddas:'389',
+    status:'open'
    
   },
   {id:3,
     name: "Expo Go",
     time:'esff',
-    yaddas:'955'
+    yaddas:'955',
+    status:'update'
    
   },
   {id:4,
     name: "Azercell",
     time:'kfjna',
-    yaddas:'24'
+    yaddas:'24',
+    status:'open'
    
   },
   {id:5,
     name: "Slack",
     time:'ghfvsabjndkmcscm',
-    yaddas:'339'
+    yaddas:'339',
+    status:'update'
    
   },
    {id:6,
     name: "Facebook",
     time:'eeced,;',
-    yaddas:'389'
+    yaddas:'389',
+    status:'open'
    
   },
   {id:7,
     name: "Expo Go",
     time:'esff',
-    yaddas:'955'
+    yaddas:'955',
+    status:'update'
    
   },
   {id:8,
     name: "Azercell",
     time:'kfjna',
-    yaddas:'24'
+    yaddas:'24',
+    status:'open'
    
   },
   {id:9,
     name: "Slack",
     time:'ghfvsabjndkmcscm',
-    yaddas:'339'
+    yaddas:'339',
+    status:'update'
    
   },
    {id:10,
     name: "Facebook",
     time:'eeced,;',
-    yaddas:'389'
+    yaddas:'389',
+    status:'open'
    
   },
   {id:11,
     name: "Expo Go",
     time:'esff',
-    yaddas:'955'
+    yaddas:'955',
+    status:'update'
    
   },
   {id:12,
     name: "Azercell",
     time:'kfjna',
-    yaddas:'24'
+    yaddas:'24',
+    status:'open'
    
   },
   {id:13,
     name: "Slack",
     time:'ghfvsabjndkmcscm',
-    yaddas:'339'
+    yaddas:'339',
+    status:'update'
    
   },
    {id:14,
     name: "Facebook",
     time:'eeced,;',
-    yaddas:'389'
+    yaddas:'389',
+    status:'open'
    
   },
   {id:15,
     name: "Expo Go",
     time:'esff',
-    yaddas:'955'
+    yaddas:'955',
+    status:'update'
    
   },
   {id:16,
     name: "Azercell",
     time:'kfjna',
-    yaddas:'24'
+    yaddas:'24',
+    status:'open'
    
   },
 ];
-  return <>
-  
-  <View>
-            <FlatList
-                data={data}
-                renderItem={productItem}
-                
-            />
-        </View>
-  
-  </>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const [text , settext] = useState(data)
+
+const filter= ()=>{
+
+let nese = data.map(q => q.status == 'open' ? 'update': 'open')
+
+// settext(nese)
+
+console.log(nese);
 
 }
 
+filter()
+// console.log(filter());
 
 
 
@@ -129,7 +170,12 @@ const generateColor = () => {
   return `#${randomColor}`;
 };
 
+
+
+
+
 const productItem = ({ item }) => (  
+  
 
   <View style={{flexDirection:'row', justifyContent:'space-between' , backgroundColor:generateColor() , margin:10}}>
   
@@ -156,7 +202,8 @@ source={{
   </View>
   
 <View>
-<Pressable  onPress={()=>alert('Not work!') } style={{borderColor:generateColor() ,  borderWidth:2 , margin: 15,  padding:5 , borderRadius:10 }}>{ item.id%2==0? 'open ': 'update'}</Pressable>
+
+<Pressable  onPress={()=> filter() } style={{borderColor:generateColor() ,  borderWidth:2 , margin: 15,  padding:5 , borderRadius:10 }}>{ item.status}</Pressable>
 
 </View>  
   
@@ -166,6 +213,32 @@ source={{
   
   )
 
+
+  return <>
+  
+  <View>
+            <FlatList
+                data={data}
+                renderItem={productItem}
+                
+            />
+        </View>
+  
+  </>
+
+
+
+
+
+
+}
+
+
+
+
+
+
+  
 
 
 
